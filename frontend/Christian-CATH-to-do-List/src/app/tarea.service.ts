@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class TareaService {
 
-  private apiUrl = 'http://localhost:5000';
+  private apiUrl = 'http://54.243.206.99:5000';
 
   constructor(private http: HttpClient) { }
 

@@ -1,0 +1,58 @@
+version: '3.8'
+
+services:
+  
+  # Contenedor Frontend (Angular)
+  frontend-christian:
+    build:
+      context: ./frontend/Christian-CATH-to-do-List 
+    container_name: frontend-container-christian
+    ports:
+      - "3000:3000" 
+    networks:
+      - mi-red-interna
+    depends_on: 
+      - api-torres
+
+  # Contenedor Backend (API Node.js)
+  api-torres: 
+    build:
+      context: ./backend
+    container_name: api-container-torres
+    ports:
+      - "5000:5000"
+    networks:
+      - mi-red-interna
+    environment: 
+      - DB_HOST=db-christian-CATH
+      - DB_USER=esparrago
+      - DB_PASSWORD=Chpaladin 
+      - DB_NAME=christian_db 
+      - DB_PORT=5432
+    depends_on:
+      - db-christian
+
+  # Contenedor Base de Datos (PostgreSQL)
+  db-christian-CATH:
+    image: postgres:15
+    container_name: db-container-christian-CATH
+    ports:
+      - "5432:5432"
+    environment: 
+      - POSTGRES_USER=esparrago
+      - POSTGRES_PASSWORD=Chpaladin
+      - POSTGRES_DB=christian_db
+    volumes:
+      - postgres-data-christian:/var/lib/postgresql/data
+    networks:
+      - mi-red-interna
+
+
+networks:
+  mi-red-interna:
+    driver: bridge
+
+
+volumes:
+  postgres-data-christian:
+    driver: local
