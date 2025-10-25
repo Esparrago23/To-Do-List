@@ -30,7 +30,7 @@ services:
       - DB_NAME=christian_db 
       - DB_PORT=5432
     depends_on:
-      - db-christian
+      - db-christian-CATH
 
   # Contenedor Base de Datos (PostgreSQL)
   db-christian-CATH:
