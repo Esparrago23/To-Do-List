@@ -1,7 +1,7 @@
 
-# Usamos una imagen de Node.js 18 como "builder"
+# Usamos una imagen de Node.js 22 como "builder"
 # Justificación: Necesitamos Node.js y npm/ng para instalar dependencias y construir el proyecto.
-FROM node:18 AS builder
+FROM node:22 AS builder
 
 
 WORKDIR /app
@@ -21,7 +21,7 @@ RUN npm run build
 
 # Usamos una imagen ligera de Node.js para servir los archivos
 # Justificación: No necesitamos todo el Angular CLI, solo Node para correr un servidor estático.
-FROM node:18
+FROM node:22
 
 WORKDIR /app
 

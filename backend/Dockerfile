@@ -1,7 +1,7 @@
-# Usamos una imagen de Node.js (LTS v18)
+# Usamos una imagen de Node.js 22
 # Justificación: Es la versión LTS (Long Term Support) actual,
 # lo que garantiza estabilidad y seguridad para un entorno de servidor.
-FROM node:18
+FROM node:22
 
 
 WORKDIR /usr/src/app
